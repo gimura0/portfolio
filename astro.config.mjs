@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import github from '@astrojs/github-pages';
 
 import sitemap from "@astrojs/sitemap";
 export default defineConfig({
@@ -12,5 +11,4 @@ export default defineConfig({
   base: '/portfolio',
   compressHTML: true,
   integrations: [sitemap()],
-  integrations: [github()],
 });
