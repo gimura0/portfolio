@@ -29,9 +29,9 @@ const dna = readFileSync('public/favicons/DNA_4.svg', 'utf-8');
         <span class="italic">animation!</span>
       </h3>
 
-      <div class="relative h-[347px]">
-        <div class="dna-placeholder" style="height: 347px;"></div>
-        <span class="absolute bottom-1 right-0 text-xs font-medium text-secondary">
+      <div class="relative inline-block w-full">
+        <div class="dna-placeholder w-full flex justify-center items-center"></div>
+        <span class="absolute bottom-0 right-0 text-xs font-medium text-secondary">
             Based on&nbsp;
             <a
               class="hover:text-black text-secondary duration-200 font-bold"
@@ -40,7 +40,7 @@ const dna = readFileSync('public/favicons/DNA_4.svg', 'utf-8');
           </span>
         </div>
       </div>
-      
+
       <script is:inline define:vars={{ dna }}>
         const placeholder = document.querySelector('.dna-placeholder');
 
