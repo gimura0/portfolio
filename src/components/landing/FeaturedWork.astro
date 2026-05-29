@@ -34,7 +34,7 @@ const dna = readFileSync('public/favicons/DNA_4.svg', 'utf-8');
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              fetch('/favicons/DNA_4.svg')
+              fetch(`${import.meta.env.BASE_URL}favicons/DNA_4.svg`)
                 .then(r => r.text())
                 .then(svgText => {
                   placeholder.innerHTML = svgText;
