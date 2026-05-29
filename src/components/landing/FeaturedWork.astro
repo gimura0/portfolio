@@ -7,7 +7,8 @@ const features = [
   //},
   // Add more features as needed...
 ];
-const base = import.meta.env.BASE_URL;
+import { readFileSync } from 'node:fs';
+const dna = readFileSync('public/favicons/DNA_4.svg', 'utf-8');
 ---
 <section class="bg-primary">
   <div class="px-8 2xl:max-w-7xl mx-auto py-6">
@@ -27,18 +28,17 @@ const base = import.meta.env.BASE_URL;
       </h3>
       <div class="dna-placeholder" style="height: 347px;"></div>
 
-      <script is:inline define:vars={{ base }}>
+      <script is:inline>
         const placeholder = document.querySelector('.dna-placeholder');
-
+        
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              fetch(`${base}favicons/DNA_4.svg`)
+              placeholder.innerHTML = dna;
                 .then(r => r.text())
                 .then(svgText => {
                   placeholder.innerHTML = svgText;
                 });
-
               observer.unobserve(placeholder);
             }
           });
