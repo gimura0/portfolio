@@ -13,11 +13,13 @@ const dna = readFileSync('public/favicons/DNA_4.svg', 'utf-8');
 <section class="bg-primary">
   <div class="px-8 2xl:max-w-7xl mx-auto py-6">
     <div class="mt-32 space-y-2">
+
       <div
         class="h-0.5 bg-secondary"
         data-aos="fade-up"
         data-aos-duration="1000">
       </div>
+
       <h3
         class="text-secondary text-s font-medium"
         data-aos="fade-up"
@@ -26,8 +28,19 @@ const dna = readFileSync('public/favicons/DNA_4.svg', 'utf-8');
         <span class="font-bold">this</span>
         <span class="italic">animation!</span>
       </h3>
-      <div class="dna-placeholder" style="height: 347px;"></div>
 
+      <div class="relative h-[347px]">
+        <div class="dna-placeholder" style="height: 347px;"></div>
+        <span class="absolute bottom-1 right-0 text-xs font-medium text-secondary">
+            Based on&nbsp;
+            <a
+              class="hover:text-black text-secondary duration-200 font-bold"
+              href="https://github.com/michael-andreuzza/swissfolio">swissfolio
+            </a>
+          </span>
+        </div>
+      </div>
+      
       <script is:inline define:vars={{ dna }}>
         const placeholder = document.querySelector('.dna-placeholder');
 
@@ -51,21 +64,9 @@ const dna = readFileSync('public/favicons/DNA_4.svg', 'utf-8');
 
         observer.observe(placeholder);
       </script>
-          <div class="flex flex-col sm:flex-row gap-2 sm:gap-0 w-full text-xs font-medium text-secondary">
-        <span class="flex"
-          >You can find some of my writing here &nbsp;<a
-            class="hover:text-black duration-200 font-bold"
-            href="https:///">Blog</a
-          ></span
-        >
-        <span class="sm:ml-auto flex"
-          >Based on &nbsp;<a
-            class="hover:text-black text-secondary duration-200 font-bold"
-            href="https://github.com/michael-andreuzza/swissfolio">swissfolio</a
-          ></span
-        >
-      </div>
+
     </div>
+
     <ul
       class="mx-auto flex flex-col lg:flex-row text-left gap-3 items-start text-secondary mt-3">
       {
