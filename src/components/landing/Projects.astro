@@ -3,8 +3,8 @@
 const otherprojects = [
   {
     title: "Nfix phosphorylation in muscle physiopathology",
-    description: "characterized the phosphorylations of the transcription factor Nfix.",
-    description1: "this project is close to my heart: it's where I built my scientific foundation. The core cell and molecular biology skills, the resourcefulness, resilience, and methodic data hunt.",
+    description: "Characterized the phosphorylations of the transcription factor Nfix.",
+    description1: "This project is close to my heart: it's where I built my scientific foundation. The core cell and molecular biology skills, the resourcefulness, resilience, and methodic data hunt.",
     details: [
       "Nfix regulates muscle biology and is involved in muscular distrophy progression, a class of genetic diseases that cause muscle weakness and degeneration, and can lead to premature death.",
       "<strong>Skills</strong>: DNA/RNA/Protein isolation & QC, PCR/rt-qPCR, Western Blot, primer design, site-directed mutagenesis, cloning, transfection/electroporation/lentiviral transduction, cell culture (primary muscle cells & immortalized cell lines), phosphoproteomics, sequencing results analysis",
@@ -13,22 +13,22 @@ const otherprojects = [
   {
     //url: "https://www.lexingtonthemes.com/",
     title: "Craniofacial Gastruloids",
-    description: "developed a 3D stem cell model to mimic early craniafacial development.",
-    description1: "answered to the unmet need of a physiologically-relevant model to capture the coordinated, multi-tissue context of early craniofacial specification.",
-    description2: "useful for mechanistic research, disease modeling, drug/teratogen screening, tissue sourcing.",
+    description: "Developed a 3D stem cell model to mimic early craniafacial development.",
+    description1: "Answered to the unmet need of a physiologically-relevant model to capture the coordinated, multi-tissue context of early craniofacial specification.",
+    description2: "Useful for mechanistic research, disease modeling, drug/teratogen screening, tissue sourcing.",
     details:"",
   },
   {
     //url: "https://github.com/gimura0/image_analysis/",
     title: "Image analysis automation",
-    description: "developed an integrated image analysis workflow combining NIS-Elements JOBS, ImageJ macros, and Python scripts.",
-    description1: "with dozens of samples/week to process, this project resulted in +40% throughput, -85% active operator time (~350–600h/year gained!).",
+    description: "Developed an integrated image analysis workflow combining NIS-Elements JOBS, ImageJ macros, and Python scripts.",
+    description1: "With dozens of samples/week to process, this project resulted in +40% throughput, -85% active operator time (~350–600h/year gained!).",
     description2: "",
     details: "",
   },
   {
     title: "The Future Project",
-    description: "who knows, maybe it will be our project together! ✌︎"
+    description: "Who knows, maybe it will be our project together! ✌︎"
   },
   // Add more projects as needed...
 ];
@@ -48,7 +48,7 @@ function calculateAosDuration(index) {
         <span class="font-bold">projects</span>
       </h3>
     </div>
-    <ul id="projects-track" class="flex gap-8 items-end text-secondary px-8 pr-32 ml-12" role="list">
+    <ul id="projects-track" class="flex gap-8 text-secondary px-8 pr-16 ml-12" role="list">
       {
         otherprojects.map((project, index) => (
           <li class="shrink-0 w-80 self-start cursor-pointer" data-index={index}>
@@ -66,11 +66,11 @@ function calculateAosDuration(index) {
   </div>
   <!-- Modal -->
   <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-primary/90 backdrop-blur-sm">
-    <div class="bg-primary border border-secondary max-w-2xl w-full mx-8 p-12 relative">
+    <div class="bg-primary border border-secondary max-w-4xl w-full mx-8 p-12 relative">
       <button id="modal-close" class="absolute top-4 right-4 text-secondary text-xs">close</button>
-      <p id="modal-number" class="text-secondary text-9xl font-black mb-4"></p>
-      <p id="modal-title" class="italic text-secondary mb-6"></p>
-      <p id="modal-details" class="text-secondary text-xl"></p>
+      <p id="modal-number" class="text-secondary text-6xl lg:text-9xl font-black mb-4"></p>
+      <p id="modal-title" class="italic text-secondary text-base lg:text-base mb-6"></p>
+      <div id="modal-details" class="text-secondary text-base lg:text-xl"></div>
     </div>
   </div>
 </section>
@@ -122,9 +122,9 @@ function calculateAosDuration(index) {
       document.getElementById('modal-title').textContent = p.title;
       const detailsEl = document.getElementById('modal-details');
       if (Array.isArray(p.details)) {
-        detailsEl.innerHTML = p.details.map(item => `<p class="text-xl mt-4">${item}</p>`).join('');
+        detailsEl.innerHTML = p.details.map(item => `<p class="mt-4">${item}</p>`).join('');
       } else {
-        detailsEl.innerHTML = `<p class="text-xl mt-4">${p.details || ''}</p>`;
+        detailsEl.innerHTML = `<p class="mt-4">${p.details || ''}</p>`;
       }
       document.getElementById('project-modal').classList.remove('hidden');
       document.getElementById('project-modal').classList.add('flex');
