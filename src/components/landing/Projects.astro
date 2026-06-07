@@ -3,7 +3,7 @@
 const otherprojects = [
   {
     title: "Nfix phosphorylation in muscle physiopathology",
-    description: "characterized the phosphorylations of the transcription factor Nfix",
+    description: "characterized the phosphorylations of the transcription factor Nfix.",
     description1: "Nfix regulates muscle biology and is involved in muscular distrophy progression, a class of genetic diseases that cause muscle weakness and degeneration, and can lead to premature death.",
     description2: "this project is close to my heart: it's where I built my scientific foundation. The core cell and molecular biology skills, the resourcefulness, resilience, and methodic data hunt."
   },
@@ -55,13 +55,15 @@ function calculateAosDuration(index) {
     </div>
 
     <ul
-      class="mx-auto grid grid-cols-1 sm:grid-cols-2 text-secondary lg:grid-cols-4 items-start gap-6 mt-32"
+      //class="mx-auto grid grid-cols-1 sm:grid-cols-2 text-secondary lg:grid-cols-4 items-start gap-6 mt-32"
+      class="flex gap-8 overflow-x-auto snap-x snap-mandatory mt-32 pb-4"
       role="list"
     >
       {
         otherprojects.map((project, index) => (
           <li
-            class="flow-root h-full "
+            //class="flow-root h-full "
+            class="flow-root shrink-0 w-[400px] snap-center"
             data-aos="fade-up"
             data-aos-duration={calculateAosDuration(index)}
           >
