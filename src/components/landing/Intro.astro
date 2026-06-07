@@ -1,6 +1,6 @@
 <section class="bg-primary">
   <div class="px-8 2xl:max-w-7xl mx-auto py-6">
-    <div class="relative grid grid-cols-1 lg:grid-cols-4 text-secondary gap-6 text-lg">
+    <div class="grid grid-cols-1 lg:grid-cols-4 text-secondary gap-6 text-lg">
       <p
         class="text-3xl lg:col-span-3 lg:text-5xl indent-32 lg:indent-32"
         data-aos="fade-up"
@@ -58,26 +58,22 @@
         Together, we can build nice things, and I can't wait ☻.
       </p>
       <img
-        src="/favicons/arrow.svg"
+        src={`${import.meta.env.BASE_URL}favicons/arrow.svg`}
+        class="intro-arrow hidden lg:block"
         alt=""
-        style="width:500px; border:2px solid red;"
+        aria-hidden="true"
       />
+    </div>
     </div>
   </div>
 </section>
-
 <style>
-.intro-arrow {
-  position: absolute;
-
-  width: 300px;
-  height: auto;
-
-  right: 10%;
-  bottom: 18rem;
-
-  opacity: 1;
-
-  outline: 2px solid red;
-}
+  .intro-arrow {
+    position: absolute;
+    top: 190%;
+    left: 40%;
+    width: 700px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
 </style>
