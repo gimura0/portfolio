@@ -48,7 +48,7 @@ function calculateAosDuration(index) {
         <span class="font-bold">projects</span>
       </h3>
     </div>
-    <ul id="projects-track" class="flex gap-8 text-secondary px-8 pr-16 ml-12" role="list">
+    <ul id="projects-track" class="flex gap-8 text-secondary px-8 pr-20 ml-12" role="list">
       {
         otherprojects.map((project, index) => (
           <li class="shrink-0 w-80 self-start cursor-pointer" data-index={index}>
@@ -139,11 +139,11 @@ function calculateAosDuration(index) {
 <style>
   #projects-track li {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
   #projects-track li.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 </style>
