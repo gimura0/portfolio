@@ -52,7 +52,7 @@ function calculateAosDuration(index) {
       {
         otherprojects.map((project, index) => (
           <li class="shrink-0 w-80 self-start cursor-pointer" data-index={index}>
-          <div class="h-20 flex items-end overflow-visible mb-28">
+          <div class="h-20 flex items-end overflow-visible mb-10 lg:mb-28">
             <p class="text-secondary text-9xl font-black lg:rotate-90 origin-left">0{index + 1}.</p>
           </div>
             <p class="italic shrink-0">{project.title}</p>
@@ -83,7 +83,7 @@ function calculateAosDuration(index) {
         document.querySelectorAll('#projects-track li').forEach((li, i) => {
           setTimeout(() => {
             li.classList.add('visible');
-          }, i * 150);
+          }, i * 300);
         });
         sectionObserver.unobserve(entry.target);
       }
