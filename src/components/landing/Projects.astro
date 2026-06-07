@@ -4,22 +4,27 @@ const otherprojects = [
   {
     title: "Nfix phosphorylation in muscle physiopathology",
     description: "characterized the phosphorylations of the transcription factor Nfix.",
-    description1: "Nfix regulates muscle biology and is involved in muscular distrophy progression, a class of genetic diseases that cause muscle weakness and degeneration, and can lead to premature death.",
-    description2: "this project is close to my heart: it's where I built my scientific foundation. The core cell and molecular biology skills, the resourcefulness, resilience, and methodic data hunt."
+    description1: "this project is close to my heart: it's where I built my scientific foundation. The core cell and molecular biology skills, the resourcefulness, resilience, and methodic data hunt.",
+    details: [
+      "Nfix regulates muscle biology and is involved in muscular distrophy progression, a class of genetic diseases that cause muscle weakness and degeneration, and can lead to premature death.",
+      "<strong>Skills</strong>: DNA/RNA/Protein isolation & QC, PCR/rt-qPCR, Western Blot, primer design, site-directed mutagenesis, cloning, transfection/electroporation/lentiviral transduction, cell culture (primary muscle cells & immortalized cell lines), phosphoproteomics, sequencing results analysis",
+    ]
   },
   {
     //url: "https://www.lexingtonthemes.com/",
     title: "Craniofacial Gastruloids",
     description: "developed a 3D stem cell model to mimic early craniafacial development.",
-    description1: "answered to the unmet need of a physiologically-relevant model to capture the coordinated, multi-tissue context of early craniofacial specification,  with the relevant tissue architecture and interactions that set up the craniofacial field.",
-    description2: "useful for mechanistic research, disease modeling, drug/teratogen screening, tissue sourcing."
+    description1: "answered to the unmet need of a physiologically-relevant model to capture the coordinated, multi-tissue context of early craniofacial specification.",
+    description2: "useful for mechanistic research, disease modeling, drug/teratogen screening, tissue sourcing.",
+    details:"",
   },
   {
     //url: "https://github.com/gimura0/image_analysis/",
     title: "Image analysis automation",
     description: "developed an integrated image analysis workflow combining NIS-Elements JOBS, ImageJ macros, and Python scripts.",
-    description1: "dozens of samples/week to process, so I launched a fruitfull cross-functional collaboration with the imaging platform manager and two incredibily talented engineering and computational biology students.",
-    description2: " resulted in +40% throughput, -85% active operator time = ~350–600h/year gained (~€10,000–20,000 in labour cost). Not bad."
+    description1: "with dozens of samples/week to process, this project resulted in +40% throughput, -85% active operator time (~350–600h/year gained!).",
+    description2: "",
+    details: "",
   },
   {
     title: "The Future Project",
@@ -34,55 +39,111 @@ function calculateAosDuration(index) {
 }
 ---
 
-<section class="bg-primary">
-  <div class="px-8 2xl:max-w-7xl mx-auto py-32">
-    <div class="space-y-2">
-      <!-- Section Title and Decorative Elements -->
-      <div
-        class="h-0.5 bg-secondary"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-      >
-      </div>
-      <h3
-        class="text-secondary text-base font-medium"
-        data-aos="fade-up"
-        data-aos-duration="1500"
-      >
+<section class="bg-primary relative" id="projects-section">
+  <div class="sticky top-0 h-screen overflow-hidden">
+    <div class="px-8 pt-16 mb-8">
+      <div class="h-0.5 bg-secondary mb-2"></div>
+      <h3 class="text-secondary text-base font-medium">
         <span>Main</span>
         <span class="font-bold">projects</span>
       </h3>
     </div>
-
-    <ul
-      //class="mx-auto grid grid-cols-1 sm:grid-cols-2 text-secondary lg:grid-cols-4 items-start gap-6 mt-32"
-      class="flex gap-8 overflow-x-auto snap-x snap-mandatory mt-32 pb-4"
-      role="list"
-    >
+    <ul id="projects-track" class="flex gap-8 items-end text-secondary px-8 pr-32 ml-12" role="list">
       {
         otherprojects.map((project, index) => (
-          <li
-            //class="flow-root h-full "
-            class="flow-root shrink-0 w-[400px] snap-center"
-            data-aos="fade-up"
-            data-aos-duration={calculateAosDuration(index)}
-          >
-            <a href={project.url}>
-              <div class="h-full flex flex-col justify-between">
-                <div>
-                  <p class="group-hover:text-secondary/70 text-secondary text-9xl font-black lg:rotate-90 xl:-translate-x-32 lg:-translate-x-20 lg:mb-8 xl:mb-0  lg:pb-8">
-                    0{index + 1}.
-                  </p>
-                  <p class="italic shrink-0">{project.title}</p>
-                  <p class="text-xl  mt-3 indent-9">{project.description}</p>
-                  <p class="text-xl  mt-3 indent-9">{project.description1}</p>
-                  <p class="text-xl  mt-3 indent-9">{project.description2}</p>
-                </div>
-              </div>
-            </a>
+          <li class="shrink-0 w-80 self-start cursor-pointer" data-index={index}>
+          <div class="h-20 flex items-end overflow-visible mb-28">
+            <p class="text-secondary text-9xl font-black lg:rotate-90 origin-left">0{index + 1}.</p>
+          </div>
+            <p class="italic shrink-0">{project.title}</p>
+            <p class="text-xl mt-3 indent-9">{project.description}</p>
+            <p class="text-xl mt-3 indent-9">{project.description1}</p>
+            <p class="text-xl mt-3 indent-9">{project.description2}</p>
           </li>
         ))
       }
     </ul>
   </div>
+  <!-- Modal -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-primary/90 backdrop-blur-sm">
+    <div class="bg-primary border border-secondary max-w-2xl w-full mx-8 p-12 relative">
+      <button id="modal-close" class="absolute top-4 right-4 text-secondary text-xs">close</button>
+      <p id="modal-number" class="text-secondary text-9xl font-black mb-4"></p>
+      <p id="modal-title" class="italic text-secondary mb-6"></p>
+      <p id="modal-details" class="text-secondary text-xl"></p>
+    </div>
+  </div>
 </section>
+
+<script is:inline>
+  const section = document.getElementById('projects-section');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('#projects-track li').forEach((li, i) => {
+          setTimeout(() => {
+            li.classList.add('visible');
+          }, i * 150);
+        });
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sectionObserver.observe(section);
+  const track = document.getElementById('projects-track');
+
+  const totalScroll = track.scrollWidth - window.innerWidth;
+  section.style.height = `${totalScroll + window.innerHeight}px`;
+
+  window.addEventListener('scroll', () => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+      const progress = Math.abs(rect.top) / (section.offsetHeight - window.innerHeight);
+      track.style.transform = `translateX(-${progress * totalScroll}px)`;
+
+      document.querySelectorAll('#projects-track li').forEach((li) => {
+        const liRect = li.getBoundingClientRect();
+        if (liRect.left < window.innerWidth && liRect.right > 0) {
+          const delay = parseInt(li.dataset.index) * 100;
+          li.style.transitionDelay = `${delay}ms`;
+          li.classList.add('visible');
+        }
+      });
+    }
+  });
+</script>
+<script is:inline define:vars={{ otherprojects }}>
+  document.querySelectorAll('#projects-track li').forEach((li) => {
+    li.addEventListener('click', () => {
+      const i = parseInt(li.dataset.index);
+      const p = otherprojects[i];
+      document.getElementById('modal-number').textContent = `0${i + 1}.`;
+      document.getElementById('modal-title').textContent = p.title;
+      const detailsEl = document.getElementById('modal-details');
+      if (Array.isArray(p.details)) {
+        detailsEl.innerHTML = p.details.map(item => `<p class="text-xl mt-4">${item}</p>`).join('');
+      } else {
+        detailsEl.innerHTML = `<p class="text-xl mt-4">${p.details || ''}</p>`;
+      }
+      document.getElementById('project-modal').classList.remove('hidden');
+      document.getElementById('project-modal').classList.add('flex');
+    });
+  });
+
+  document.getElementById('modal-close').addEventListener('click', () => {
+    document.getElementById('project-modal').classList.add('hidden');
+    document.getElementById('project-modal').classList.remove('flex');
+  });
+</script>
+<style>
+  #projects-track li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  #projects-track li.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
