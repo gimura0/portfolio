@@ -41,7 +41,7 @@ function calculateAosDuration(index) {
 
 <section class="bg-primary relative" id="projects-section">
   <div class="sticky top-0 h-screen overflow-hidden">
-    <div class="px-8 pt-16 mb-8">
+    <div class="px-8 pt-16 mb-16 lg:mb-8">
       <div class="h-0.5 bg-secondary mb-2"></div>
       <h3 class="text-secondary text-base font-medium">
         <span>Main</span>
@@ -52,7 +52,7 @@ function calculateAosDuration(index) {
       {
         otherprojects.map((project, index) => (
           <li class="shrink-0 w-80 self-start cursor-pointer" data-index={index}>
-          <div class="h-20 flex items-end overflow-visible mb-10 lg:mb-28">
+          <div class="h-20 flex items-end overflow-visible mb-10 lg:mb-28 ">
             <p class="text-secondary text-9xl font-black lg:rotate-90 origin-left">0{index + 1}.</p>
           </div>
             <p class="italic shrink-0">{project.title}</p>
